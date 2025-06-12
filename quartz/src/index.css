@@ -1,0 +1,151 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light mode colors (kept as fallback) */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 160 84% 39%;
+    --radius: 0.5rem;
+    
+    --data-grid-header: 220 14% 96%;
+    --data-grid-row: 0 0% 100%;
+    --data-grid-row-hover: 220 14% 98%;
+    --outlier-red: 0 84% 60%;
+    --outlier-yellow: 48 96% 53%;
+    --success-green: 160 84% 39%;
+  }
+ 
+  /* Dark mode enabled by default */
+  * {
+    /* Apply dark mode colors by default */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 160 84% 49%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 160 84% 49%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 160 84% 49%;
+    
+    --data-grid-header: 217.2 32.6% 17.5%;
+    --data-grid-row: 217.2 32.6% 15%;
+    --data-grid-row-hover: 217.2 32.6% 20%;
+    --outlier-red: 0 72% 51%;
+    --outlier-yellow: 48 96% 53%;
+    --success-green: 160 84% 49%;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Ensure dark scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--accent) / 0.8);
+  }
+}
+
+@layer utilities {
+  .text-outlier-red {
+    color: hsl(var(--outlier-red));
+  }
+  .text-outlier-yellow {
+    color: hsl(var(--outlier-yellow));
+  }
+  .text-success-green {
+    color: hsl(var(--success-green));
+  }
+  .bg-outlier-red {
+    background-color: hsl(var(--outlier-red) / 0.1);
+  }
+  .bg-outlier-yellow {
+    background-color: hsl(var(--outlier-yellow) / 0.1);
+  }
+  .bg-success-green {
+    background-color: hsl(var(--success-green) / 0.1);
+  }
+  .border-outlier-red {
+    border-color: hsl(var(--outlier-red) / 0.3);
+  }
+  .border-outlier-yellow {
+    border-color: hsl(var(--outlier-yellow) / 0.3);
+  }
+  .border-success-green {
+    border-color: hsl(var(--success-green) / 0.3);
+  }
+  
+  /* Dark mode glass effect utilities */
+  .glass-dark {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .glass-card {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Beautiful gradient backgrounds */
+  .gradient-bg {
+    background: linear-gradient(135deg, 
+      hsl(var(--background)) 0%, 
+      hsl(217.2 32.6% 8%) 100%);
+  }
+  
+  .gradient-accent {
+    background: linear-gradient(135deg, 
+      hsl(var(--accent)) 0%, 
+      hsl(160 84% 35%) 100%);
+  }
+}

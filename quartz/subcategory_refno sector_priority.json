@@ -1,0 +1,214 @@
+[
+  {
+    "gpc_reference_number": "I.1.1",
+    "priority": "high"
+  },
+  {
+    "gpc_reference_number": "I.1.2",
+    "priority": "high"
+  },
+  {
+    "gpc_reference_number": "I.1.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "I.2.1",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "I.2.2",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "I.2.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "I.3.1",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "I.3.2",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "I.3.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "I.4.1",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "I.4.2",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "I.4.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "I.4.4",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "I.5.1",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "I.5.2",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "I.5.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "I.6.1",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "I.6.2",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "I.6.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "I.7.1",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "I.8.1",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "II.1.1",
+    "priority": "high"
+  },
+  {
+    "gpc_reference_number": "II.1.2",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "II.1.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "II.2.1",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "II.2.2",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "II.2.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "II.3.1",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "II.3.2",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "II.3.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "II.4.1",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "II.4.2",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "II.4.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "II.5.1",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "II.5.2",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "III.1.1",
+    "priority": "high"
+  },
+  {
+    "gpc_reference_number": "III.1.2",
+    "priority": "high"
+  },
+  {
+    "gpc_reference_number": "III.1.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "III.2.1",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "III.2.2",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "III.2.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "III.3.1",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "III.3.2",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "III.3.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "III.4.1",
+    "priority": "high"
+  },
+  {
+    "gpc_reference_number": "III.4.2",
+    "priority": "high"
+  },
+  {
+    "gpc_reference_number": "III.4.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "IV.1",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "IV.2",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "V.1",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "V.2",
+    "priority": "medium"
+  },
+  {
+    "gpc_reference_number": "V.3",
+    "priority": "low"
+  },
+  {
+    "gpc_reference_number": "VI.1",
+    "priority": "low"
+  }
+]
