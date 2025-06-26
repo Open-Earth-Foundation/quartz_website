@@ -5,7 +5,6 @@ export interface EnvironmentalReport {
   id: number;
   name: string;
   country?: string;
-  sector?: string;
   url?: string;
   gpc_ref_num?: string; // GPC reference numbers separated by semicolons
   human_eval?: number; // 0=not scanned by human, 1=scanned by human
@@ -38,14 +37,12 @@ export interface ReportsResponse {
 
 export interface ReportsMetadata {
   countries: string[];
-  sectors: string[];
   statuses: { value: number; label: string }[];
   humanScannedOptions: { value: number; label: string }[];
 }
 
 export interface ReportsQuery {
   country?: string;
-  sector?: string;
   status?: number; // 0, 1, or 2
   humanScanned?: number; // 0=not scanned, 1=scanned by human
   page?: number;
@@ -64,7 +61,6 @@ export interface UpdateReviewRequest {
 export interface UpdateReportRequest {
   name?: string;
   country?: string;
-  sector?: string;
   url?: string;
   gpc_ref_num?: string;
   accepted?: number;
@@ -226,7 +222,6 @@ export const reportsApi = {
     try {
       const {
         country,
-        sector,
         status,
         humanScanned,
         page = 1,
@@ -245,9 +240,6 @@ export const reportsApi = {
       // Apply filters only if the fields exist
       if (country) {
         query = query.eq("country", country);
-      }
-      if (sector) {
-        query = query.eq("sector", sector);
       }
       if (status !== undefined) {
         query = query.eq("accepted", status);
@@ -319,68 +311,48 @@ export const reportsApi = {
 
   async getReportsMetadata(): Promise<ReportsMetadata> {
     try {
-      console.log("Fetching reports metadata...");
+      console.log("Fetching metadata from Supabase...");
 
-      // Get all unique countries and sectors, handling case where columns might not exist
-      const { data: allData, error } = await supabase
+      // Fetch distinct countries
+      const { data: countriesData, error: countriesError } = await supabase
         .from("environmental_report")
-        .select("*")
-        .limit(1000); // Reasonable limit to get all unique values
+        .select("country")
+        .neq("country", "EMPTY")
+        .neq("country", "");
 
-      if (error) {
-        console.error("Supabase metadata error:", error);
-        throw new Error(`Failed to fetch metadata: ${error.message}`);
-      }
+      if (countriesError) throw countriesError;
+      console.log("Countries fetched:", countriesData);
 
-      if (!allData || allData.length === 0) {
-        console.warn("No data found for metadata");
-        return {
-          countries: [],
-          sectors: [],
-          statuses: [],
-          humanScannedOptions: [],
-        };
-      }
-
-      // Extract unique countries and sectors, filtering out null/undefined
       const countries = [
         ...new Set(
-          allData
-            .map((item) => item.country)
-            .filter((country) => country && country.trim() !== "")
+          countriesData.map((item) => item.country).filter(Boolean)
         ),
-      ].sort();
+      ] as string[];
 
-      const sectors = [
-        ...new Set(
-          allData
-            .map((item) => item.sector)
-            .filter((sector) => sector && sector.trim() !== "")
-        ),
-      ].sort();
+      console.log("Processed countries:", countries);
 
+      // Hardcoded statuses and humanScanned options
       const statuses = [
-        { value: 0, label: "❌ Not Accept" },
-        { value: 1, label: "⚠️ Partially Accept" },
-        { value: 2, label: "✅ Accept" },
+        { value: 0, label: "Not Accepted" },
+        { value: 1, label: "Partially Accepted" },
+        { value: 2, label: "Accepted" },
       ];
-
       const humanScannedOptions = [
-        { value: 0, label: "🤖 Not Scanned by Human" },
-        { value: 1, label: "👤 Scanned by Human" },
+        { value: 0, label: "Not Scanned" },
+        { value: 1, label: "Scanned" },
       ];
 
-      console.log("Metadata extracted:", {
+      const metadata: ReportsMetadata = {
         countries,
-        sectors,
         statuses,
         humanScannedOptions,
-      });
+      };
 
-      return { countries, sectors, statuses, humanScannedOptions };
+      console.log("Final metadata:", metadata);
+      return metadata;
     } catch (error) {
-      console.error("Error in getReportsMetadata:", error);
-      throw error;
+      console.error("Error fetching metadata:", error);
+      throw new Error(`Failed to fetch report metadata: ${error}`);
     }
   },
 

@@ -76,7 +76,7 @@ function Dashboard() {
       reportsLoading,
       reportsError: reportsError?.message,
       metadata: metadata
-        ? `${metadata.countries.length} countries, ${metadata.sectors.length} sectors`
+        ? `${metadata.countries.length} countries`
         : "No metadata",
       metadataLoading,
       metadataError: metadataError?.message,
@@ -182,7 +182,6 @@ function Dashboard() {
         <section aria-label="Report filters and summary statistics">
           <FilterPanel
             countries={metadata?.countries || []}
-            sectors={metadata?.sectors || []}
             statuses={metadata?.statuses || []}
             filters={filters}
             onFiltersChange={setFilters}

@@ -11,7 +11,6 @@ import { ReportsQuery } from "@/lib/api";
 
 interface FilterPanelProps {
   countries: string[];
-  sectors: string[];
   statuses: { value: number; label: string }[];
   filters: ReportsQuery;
   onFiltersChange: (filters: ReportsQuery) => void;
@@ -27,7 +26,6 @@ interface FilterPanelProps {
 
 export function FilterPanel({
   countries,
-  sectors,
   statuses,
   filters,
   onFiltersChange,
@@ -38,14 +36,6 @@ export function FilterPanel({
     onFiltersChange({
       ...filters,
       country: value === "all" ? undefined : value,
-      page: 1, // Reset to first page
-    });
-  };
-
-  const handleSectorChange = (value: string) => {
-    onFiltersChange({
-      ...filters,
-      sector: value === "all" ? undefined : value,
       page: 1, // Reset to first page
     });
   };
@@ -77,16 +67,12 @@ export function FilterPanel({
 
   const hasActiveFilters =
     filters.country ||
-    filters.sector ||
     filters.status !== undefined ||
     filters.humanScanned !== undefined;
 
   // Filter out empty, null, or undefined values
   const validCountries = countries.filter(
     (country) => country && country.trim() !== "" && country !== "EMPTY"
-  );
-  const validSectors = sectors.filter(
-    (sector) => sector && sector.trim() !== "" && sector !== "EMPTY"
   );
 
   return (
@@ -104,7 +90,7 @@ export function FilterPanel({
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Country Filter */}
             <div className="space-y-3">
               <label
@@ -141,48 +127,6 @@ export function FilterPanel({
                       className="text-popover-foreground hover:bg-accent/10"
                     >
                       {country}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Sector Filter */}
-            <div className="space-y-3">
-              <label
-                htmlFor="sector-select"
-                className="text-sm font-semibold text-foreground flex items-center gap-2"
-              >
-                <span className="text-success-green" aria-hidden="true">
-                  🏭
-                </span>
-                Sector
-              </label>
-              <Select
-                value={filters.sector || "all"}
-                onValueChange={handleSectorChange}
-              >
-                <SelectTrigger
-                  id="sector-select"
-                  className="bg-background border-border text-foreground hover:border-success-green transition-colors focus:ring-success-green/50"
-                  aria-label="Filter by sector"
-                >
-                  <SelectValue placeholder="All Sectors" />
-                </SelectTrigger>
-                <SelectContent className="bg-popover border-border">
-                  <SelectItem
-                    value="all"
-                    className="text-popover-foreground hover:bg-accent/10"
-                  >
-                    All Sectors
-                  </SelectItem>
-                  {validSectors.map((sector) => (
-                    <SelectItem
-                      key={sector}
-                      value={sector}
-                      className="text-popover-foreground hover:bg-accent/10"
-                    >
-                      {sector}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -309,11 +253,6 @@ export function FilterPanel({
                 {filters.country && (
                   <span className="px-2 py-1 bg-accent/20 text-accent-foreground border border-accent/30 rounded-md text-xs">
                     Country: {filters.country}
-                  </span>
-                )}
-                {filters.sector && (
-                  <span className="px-2 py-1 bg-success-green/20 text-white border border-success-green/30 rounded-md text-xs">
-                    Sector: {filters.sector}
                   </span>
                 )}
                 {filters.status !== undefined && (
